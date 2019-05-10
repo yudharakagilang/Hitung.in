@@ -1,7 +1,48 @@
+
+
+<?php
+
+include('config.php');
+
+
+if(isset($_POST['login'])){
+            
+	
+
+	$username = $_POST['username'];
+	$password = $_POST['password'];
+	$query = "select password from admin where username = '$username'";
+		$query_run = mysqli_query($mysqli,$query);
+		$num_rows = mysqli_num_rows($query_run);
+		if($num_rows>0){
+			$data = mysqli_fetch_assoc($query_run);
+			if(password_verify($password, $data['password'])){
+				session_destroy();
+				session_start();
+				$_SESSION['username'] = $username;
+				header("location:dashboard.php");
+			}else{
+			 echo' 
+			 <script>
+			 alert("Password atau Nama akun salah");
+			 </script>'  ;    
+			}
+
+		}else{
+		 echo' 
+		 <script>
+		 alert("Password atau Nama akun salah");
+		 </script>'  ;   
+		}
+  
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Hitu</title>
+	<title>Hitung.In</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
@@ -28,8 +69,10 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/img-02.jpg');">
 			<div class="wrap-login100 p-t-10 p-b-30">
-				<form class="login100-form validate-form">
-					<div class="login100-form-avatar">
+
+
+			<form action="index.php" method="POST">
+			<div class="login100-form-avatar">
 						<img src="images/image001.png" alt="avatar"  href="index.html">
 					</div>
 
@@ -37,31 +80,28 @@
 						HITUNG.IN
 					</span>
 
-					<div class="wrap-input100 validate-input m-b-10" data-validate = "Username is required">
-						<input class="input100" type="text" name="username" placeholder="Username">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-user"></i>
-						</span>
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user"></i></span>
+							<input type="text" class="form-control" name="username" placeholder="Username" required="required">
+							
+						</div>
 					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+							<input type="password" class="form-control" name="password" placeholder="Password" required="required">
+						</div>
+					</div>
+					<div class="form-group">
+						<button type="submit" name ="login" class="btn btn-primary btn-block btn-lg">Sign In</button>
+          </div>
 
-					<div class="wrap-input100 validate-input m-b-10" data-validate = "Password is required">
-						<input class="input100" type="password" name="pass" placeholder="Password">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock"></i>
-						</span>
-					</div>
-
-					<div class="container-login100-form-btn p-t-10">
-						<button class="login100-form-btn">LOGIN
-						</button>
-						<form>
-<input type="button" value="Put Your Text Here" onclick="window.location.href='index.html'" />
-</form>
-					</div>
-					</div>
+          
 				</form>
+
+
+
 			</div>
 		</div>
 	</div>
