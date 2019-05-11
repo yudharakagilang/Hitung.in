@@ -6,6 +6,8 @@ include "config.php";
 if(empty($_SESSION['username'])){
     header("location: index.php");
   }
+
+
 ?>
 
 
@@ -24,7 +26,8 @@ if(empty($_SESSION['username'])){
     <title>Dashboard</title>
 
     <!-- Fontfaces CSS-->
-   // <link href="css/font-face.css" rel="stylesheet" media="all">
+    //
+    <link href="css/font-face.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -32,10 +35,12 @@ if(empty($_SESSION['username'])){
     <!-- Bootstrap CSS-->
     <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
- 
+
 
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
+
+    
 
 </head>
 
@@ -49,7 +54,7 @@ if(empty($_SESSION['username'])){
                         <a class="logo" href="index.html">
                             <img src="images/image001.png" alt="Cool" />
                         </a>
-                        
+
                         <h1>HITUNG.IN</h1>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -72,7 +77,7 @@ if(empty($_SESSION['username'])){
                 <a href="#">
                     <img src="images/icons/happy2.ico" alt="Cool Admin" />
                 </a>
-                
+
                 <h1>HITUNG.IN</h1>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -81,13 +86,18 @@ if(empty($_SESSION['username'])){
                         <li class="active has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                            <li class="has-sub">
-                            <a class="js-arrow" href="Chart.php">
-                                <i class="fas fa-tachometer-alt"></i>Statistic CCTV </a>
-    
+                        <li class="has-sub">
+                            <a class="js-arrow" href="Chart1.php">
+                                <i class="fas fa-tachometer-alt"></i>Statistic CCTV 1 </a>
+
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="Chart2.php">
+                                <i class="fas fa-tachometer-alt"></i>Statistic CCTV 2 </a>
+
                         </li>
                         </li>
-                   
+
                         </li>
                     </ul>
                 </nav>
@@ -105,7 +115,7 @@ if(empty($_SESSION['username'])){
                             <div class="header-button">
                                 <div class="noti-wrap">
                                 </div>
-                                
+
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
@@ -128,20 +138,21 @@ if(empty($_SESSION['username'])){
                                                     <span class="email">johndoe@example.com</span>
                                                 </div>
                                             </div>
-                                    
+
                                         </div>
-                                        
+
                                     </div>
                                 </div>
-                                
+
                             </div>
-                            <button type="button" class="btn btn-danger" data-toggle="modal" href="logout.php" onclick="window.location.href = 'logout.php';">
-            Logout
-            </button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" href="logout.php"
+                                onclick="window.location.href = 'logout.php';">
+                                Logout
+                            </button>
                         </div>
-                
+
                     </div>
-                    
+
                 </div>
             </header>
             <!-- HEADER DESKTOP-->
@@ -157,90 +168,67 @@ if(empty($_SESSION['username'])){
                                 </div>
                             </div>
                         </div>
-                        
-                        
+
+
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="au-card au-card--no-shadow au-card--no-pad m-b-40">
                                     <div class="au-card-title" style="background-image:url('images/bg-title-01.jpg');">
                                         <div class="bg-overlay bg-overlay--green"></div>
-                                        <h3><i class="zmdi zmdi-account-calendar"></i>CCTV 1</h3>
+                                        <h3><i class="zmdi zmdi-account-calendar"></i>CCTV Lantai 2</h3>
                                     </div>
 
-                                        <div class="au-task-list js-scrollbar3">
-                                            <div class="au-task__item au-task__item--danger">
+                                    <div class="au-task-list js-scrollbar3">
+                                        <div class="au-task__item au-task__item--danger">
                                             <div class="embed-responsive embed-responsive-21by9">
-                                                        zz <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ncTDcIlvRwc"></iframe>
-                                            </div>
+                                            <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="589.19" height="443" type="text/html" src="https://www.youtube.com/embed/OK2_ndImlNI?autoplay=0&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com"><div><small><a href="https://youtubeembedcode.com/nl/">youtubeembedcode nl</a></small></div><div><small><a href="http://add-link-exchange.com">add-Link- exchange</a></small></div></iframe>                                            </div>
+                                        </div>
+                                        <br>
+                                        <div id="aw">
+                                            <?php
+                                            $mysqli = mysqli_connect("localhost", "root", "", "hitungin");
 
-                                        
+                                            // QUERY 1
+                                            $sql="SELECT value FROM record ORDER by time desc limit 1";
+                                            $result = mysqli_query($mysqli,$sql);
+                                            while($row = mysqli_fetch_array($result)) {
+                                                $jumlah_orang=$row['value'];                                                 
+                                                echo "<h3>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspJumlah Orang:&nbsp&nbsp&nbsp$jumlah_orang</h3>";
+                                            }
+
+                                            ?>
                                             </div>
                                     </div>
+                                    
+                                    
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="au-card au-card--no-shadow au-card--no-pad m-b-40">
                                     <div class="au-card-title" style="background-image:url('images/bg-title-01.jpg');">
                                         <div class="bg-overlay bg-overlay--green"></div>
-                                        <h3><i class="zmdi zmdi-account-calendar"></i>CCTV 1</h3>
+                                        <h3><i class="zmdi zmdi-account-calendar"></i>CCTV 2</h3>
                                     </div>
 
-                                        <div class="au-task-list js-scrollbar3">
-                                            <div class="au-task__item au-task__item--danger">
+                                    <div class="au-task-list js-scrollbar3">
+                                        <div class="au-task__item au-task__item--danger">
                                             <div class="embed-responsive embed-responsive-21by9">
-                                                         <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ncTDcIlvRwc"></iframe>
+                                            <iframe src="" width="450" height="200" frameborder="0"></iframe>
                                             </div>
 
-                                        
-                                            </div>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="au-card au-card--no-shadow au-card--no-pad m-b-10">
-                                    <div class="au-card-title h3" style="background-image:url('images/bg-title-01.jpg');">
-                                        <div class="bg-overlay bg-overlay--green"></div>
-                                        <h3><i class="zmdi zmdi-account-calendar"></i>CCTV 1</h3>
-                                    </div>
-
-                                        <div class="au-task-list js-scrollbar3">
-                                            <div class="au-task__item au-task__item--danger">
-                                            <div class="embed-responsive embed-responsive-21by9">
-                                                         <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ncTDcIlvRwc"></iframe>
-                                            </div>
-
-                                        
-                                            </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="au-card au-card--no-shadow au-card--no-pad m-b-40">
-                                    <div class="au-card-title" style="background-image:url('images/bg-title-01.jpg');">
-                                        <div class="bg-overlay bg-overlay--green"></div>
-                                        <h3><i class="zmdi zmdi-account-calendar"></i>CCTV 1</h3>
-                                    </div>
-
-                                        <div class="au-task-list js-scrollbar3">
-                                            <div class="au-task__item au-task__item--danger">
-                                            <div class="embed-responsive embed-responsive-21by9">
-                                                         <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ncTDcIlvRwc"></iframe>
-                                            </div>
-
-                                        
-                                            </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
+                        
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="copyright">
-                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a
+                                            href="https://colorlib.com">Colorlib</a>.</p>
                                 </div>
                             </div>
                         </div>
@@ -281,3 +269,18 @@ if(empty($_SESSION['username'])){
 
 </html>
 <!-- end document-->
+
+<script type="text/javascript"
+    src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+
+<script>
+ $(function() {
+
+//This setTimeout function execute or call automatically when 5 second completed.
+
+
+setInterval(function() {
+  $("#aw").load(" #aw");
+}, 1000);
+});
+</script>

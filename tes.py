@@ -1,16 +1,20 @@
-
-import mysql.connector
-
 import mysql.connector
 
 mydb = mysql.connector.connect(
   host="localhost",
   user="root",
-  passwd=""
+  passwd="",
+  database="hitungin"
 )
+
 mycursor = mydb.cursor()
 
-mycursor.execute("SHOW DATABASES")
 
-for x in mycursor:
-  print(x)
+
+sql = "INSERT INTO  (value date, tiem) VALUES (%s, %s, %s)"
+val = ("John", "Highway 21")
+mycursor.execute(sql, val)
+
+mydb.commit()
+
+print(mycursor.rowcount, "record inserted.")
