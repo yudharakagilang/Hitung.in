@@ -225,6 +225,7 @@ function drawChart()
                                             //$sql2="select max(value) as MAX, HOUR(time)AS Jam, DAY(time) as Tanggal, MONTH(time) as Bulan ,YEAR(time) as Tahun from record1 where DAY(time)=DAY(now()) and MONTH(time)=MONTH(now()) and YEAR(time)=YEAR(now());";
                                             $sql2="select rerata,Jam from avg_hour1 where Tanggal=DAY(now()) and Bulan=MONTH(now()) and Tahun=YEAR(now()) order by rerata DESC limit 1";
                                             $result2 = mysqli_query($mysqli,$sql2);
+                                            $jam=0;
                                             while($row2 = mysqli_fetch_array($result2)) {
                                                 $jumlah_orang2=$row2['rerata'];
                                                 $jam=$row2['Jam'];
@@ -238,11 +239,11 @@ function drawChart()
                                               // QUERY 3 
                                               $sql2="select rerata,Jam from avg_hour1 where Tanggal=DAY(now()) and Bulan=MONTH(now()) and Tahun=YEAR(now()) order by rerata ASC limit 1";
                                               $result2 = mysqli_query($mysqli,$sql2);
+                                            $jam2=0;
                                               while($row2 = mysqli_fetch_array($result2)) {
                                                   //$jumlah_orang2=$row2['MIN']; 
                                                   $jam2=$row2['Jam'];
-                                                
-                                                  
+
                                                   
                                               }
                                               echo "<br>";
