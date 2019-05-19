@@ -19,3 +19,8 @@ Adapun agar dapat berjalan, maka dapat dilakukan dengan mengikuti langkah beriku
 
 #STEP 3 : WEB
 1. Buka Web dan sistem dapat berjalan
+
+
+
+
+* username dan password = admin
