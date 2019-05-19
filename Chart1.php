@@ -23,7 +23,7 @@ if(empty($_SESSION['username'])){
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>CCTV Statistic</title>
+    <title>CCTV Statistic 1</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -129,6 +129,17 @@ function drawChart()
                             </a>
                         </li>
                         </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="Chart3.php">
+                                <i class="fas fa-tachometer-alt"></i>Statistic CCTV 3 </a>
+
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="Chart4.php">
+                                <i class="fas fa-tachometer-alt"></i>Statistic CCTV 4 </a>
+
+                        </li>
+                        </li>
                         </li>
                     </ul>
                 </nav>
@@ -188,7 +199,7 @@ function drawChart()
                                     <h2 align="center">CCTV 1 Statistic</h2>
                                     <div id="line_chart" style="width: 1600px  ; height: 700px">
                                         <?php 
-                                            $uri ="http://localhost:3000/d-solo/qed00LiWk/lantai-2?orgId=1&panelId=2&refresh=5s&from=now-5m&to=now&theme=light"  ;
+                                            $uri ="http://localhost:3000/d-solo/TiXlWjmZk/lantai-1?orgId=1&panelId=2&refresh=5s&from=now-5m&to=now&theme=light"  ;
                                             ?>
                                         <iframe src=<?php echo $uri ?> width="1600" height="500"
                                             frameborder="0"></iframe>
@@ -198,7 +209,7 @@ function drawChart()
                                             $mysqli = mysqli_connect("localhost", "root", "", "hitungin");
 
                                             // QUERY 1
-                                            $sql="SELECT value FROM record ORDER by time desc limit 1";
+                                            $sql="SELECT value FROM record1 ORDER by time desc limit 1";
                                             $result = mysqli_query($mysqli,$sql);
                                             while($row = mysqli_fetch_array($result)) {
                                                 $jumlah_orang=$row['value']; 
@@ -211,30 +222,31 @@ function drawChart()
                                         </div>
                                         <?php
                                             // QUERY 2 
-                                            $sql2="select rerata,Jam from avg_hour order by rerata DESC limit 1";
+                                            //$sql2="select max(value) as MAX, HOUR(time)AS Jam, DAY(time) as Tanggal, MONTH(time) as Bulan ,YEAR(time) as Tahun from record1 where DAY(time)=DAY(now()) and MONTH(time)=MONTH(now()) and YEAR(time)=YEAR(now());";
+                                            $sql2="select rerata,Jam from avg_hour1 where Tanggal=DAY(now()) and Bulan=MONTH(now()) and Tahun=YEAR(now()) order by rerata DESC limit 1";
                                             $result2 = mysqli_query($mysqli,$sql2);
                                             while($row2 = mysqli_fetch_array($result2)) {
-                                                $jumlah_orang2=$row2['rerata']; 
+                                                $jumlah_orang2=$row2['rerata'];
                                                 $jam=$row2['Jam'];
                                                
                                                 
                                                
                                             }
                                             echo "<br>";
-                                            echo "<h3>Rata - rata jam kunjung paling banyak (hari ini):&nbsp&nbsp&nbsp$jumlah_orang2 pada jam:$jam</h3>";
+                                            echo "<h3>Peak Hour (today) :&nbsp&nbsp&nbsp&nbspJam&nbsp$jam&nbsp</h3>";
 
                                               // QUERY 3 
-                                              $sql2="select rerata,Jam from avg_hour order by rerata ASC limit 1";
+                                              $sql2="select rerata,Jam from avg_hour1 where Tanggal=DAY(now()) and Bulan=MONTH(now()) and Tahun=YEAR(now()) order by rerata ASC limit 1";
                                               $result2 = mysqli_query($mysqli,$sql2);
                                               while($row2 = mysqli_fetch_array($result2)) {
-                                                  $jumlah_orang2=$row2['rerata']; 
+                                                  //$jumlah_orang2=$row2['MIN']; 
                                                   $jam2=$row2['Jam'];
                                                 
                                                   
                                                   
                                               }
                                               echo "<br>";
-                                              echo "<h3>Rata - rata jam kunjung paling sedikit (hari ini):&nbsp&nbsp&nbsp$jumlah_orang2 pada jam:$jam2</h3>";
+                                              echo "<h3>Off Peak Hour (today) :&nbsp&nbsp&nbsp&nbspJam&nbsp$jam2&nbsp</h3>";
                                             
 
                                             

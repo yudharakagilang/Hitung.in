@@ -40,7 +40,7 @@ if(empty($_SESSION['username'])){
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
 
-    
+
 
 </head>
 
@@ -94,6 +94,16 @@ if(empty($_SESSION['username'])){
                         <li class="has-sub">
                             <a class="js-arrow" href="Chart2.php">
                                 <i class="fas fa-tachometer-alt"></i>Statistic CCTV 2 </a>
+
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="Chart3.php">
+                                <i class="fas fa-tachometer-alt"></i>Statistic CCTV 3 </a>
+
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="Chart4.php">
+                                <i class="fas fa-tachometer-alt"></i>Statistic CCTV 4 </a>
 
                         </li>
                         </li>
@@ -169,61 +179,102 @@ if(empty($_SESSION['username'])){
                             </div>
                         </div>
 
-
                         <div class="row">
-                            <div class="col-lg-6">
-                                <div class="au-card au-card--no-shadow au-card--no-pad m-b-40">
-                                    <div class="au-card-title" style="background-image:url('images/bg-title-01.jpg');">
-                                        <div class="bg-overlay bg-overlay--green"></div>
-                                        <h3><i class="zmdi zmdi-account-calendar"></i>CCTV Lantai 2</h3>
+                            <div class="col-md-12">
+                            <div class="card text-center">
+                                    <div class="card-header">
+                                        CCTV 1
                                     </div>
-
-                                    <div class="au-task-list js-scrollbar3">
-                                        <div class="au-task__item au-task__item--danger">
-                                            <div class="embed-responsive embed-responsive-21by9">
-                                            <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="589.19" height="443" type="text/html" src="https://www.youtube.com/embed/OK2_ndImlNI?autoplay=0&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com"><div><small><a href="https://youtubeembedcode.com/nl/">youtubeembedcode nl</a></small></div><div><small><a href="http://add-link-exchange.com">add-Link- exchange</a></small></div></iframe>                                            </div>
+                                    <div class="card-body">
+                                    <div class="embed-16by9">
+                                        <iframe width="500" height="300" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                         </div>
-                                        <br>
-                                        <div id="aw">
+                                    </div>
+                                    <div class="card-footer text-muted">
+                                    <div id="aw1">
                                             <?php
                                             $mysqli = mysqli_connect("localhost", "root", "", "hitungin");
-
                                             // QUERY 1
-                                            $sql="SELECT value FROM record ORDER by time desc limit 1";
+                                            $sql="SELECT value FROM record1 ORDER by time desc limit 1";
                                             $result = mysqli_query($mysqli,$sql);
                                             while($row = mysqli_fetch_array($result)) {
                                                 $jumlah_orang=$row['value'];                                                 
-                                                echo "<h3>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspJumlah Orang:&nbsp&nbsp&nbsp$jumlah_orang</h3>";
-                                            }
 
+                                            }
+                                            echo "<h3>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspJumlah Orang:&nbsp&nbsp&nbsp$jumlah_orang</h3>";
                                             ?>
                                             </div>
                                     </div>
                                     
-                                    
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="au-card au-card--no-shadow au-card--no-pad m-b-40">
-                                    <div class="au-card-title" style="background-image:url('images/bg-title-01.jpg');">
-                                        <div class="bg-overlay bg-overlay--green"></div>
-                                        <h3><i class="zmdi zmdi-account-calendar"></i>CCTV 2</h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                            <div class="card text-center">
+                                    <div class="card-header">
+                                        CCTV 2
                                     </div>
-
-                                    <div class="au-task-list js-scrollbar3">
-                                        <div class="au-task__item au-task__item--danger">
-                                            <div class="embed-responsive embed-responsive-21by9">
-                                            <iframe src="" width="450" height="200" frameborder="0"></iframe>
-                                            </div>
-
-
+                                    <div class="card-body">
+                                        <div class="embed-16by9">
+                                        <iframe width="500" height="300" src="http://localhost:5001/video_feed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                         </div>
                                     </div>
+                                    <div class="card-footer text-muted">
+                                    <div id="aw2">
+                                            <?php
+                                            $mysqli = mysqli_connect("localhost", "root", "", "hitungin");
+                                            // QUERY 1
+                                            $sql="SELECT value FROM record2 ORDER by time desc limit 1";
+                                            $result = mysqli_query($mysqli,$sql);
+                                            while($row = mysqli_fetch_array($result)) {
+                                                $jumlah_orang2=$row['value'];                                                 
+                                                
+                                            }
+                                            echo "<h3>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspJumlah Orang:&nbsp&nbsp&nbsp$jumlah_orang2</h3>";
+                                            ?>
+                                            </div>
+                                    </div>
+                                    
+                                    </div>
                                 </div>
                             </div>
-
+                            <div class="row">
+                            <div class="col-md-12">
+                            <div class="card text-center">
+                                    <div class="card-header">
+                                        CCTV 3
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="embed-16by9">
+                                        <iframe width="500" height="300" src="http://192.168.43.7:5000/video_feed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer text-muted">
+                                    <div id="aw3">
+                                            <?php
+                                            $mysqli = mysqli_connect("localhost", "root", "", "hitungin");
+                                            // QUERY 1
+                                            $sql="SELECT value FROM record3 ORDER by time desc limit 1";
+                                            $result = mysqli_query($mysqli,$sql);
+                                            while($row = mysqli_fetch_array($result)) {
+                                                $jumlah_orang3=$row['value'];                                                 
+                                                
+                                            }
+                                            echo "<h3>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspJumlah Orang:&nbsp&nbsp&nbsp$jumlah_orang3</h3>";
+                                            ?>
+                                            </div>
+                                    </div>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         </div>
                         
+           
+
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="copyright">
@@ -270,17 +321,18 @@ if(empty($_SESSION['username'])){
 </html>
 <!-- end document-->
 
-<script type="text/javascript"
-    src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 
 <script>
- $(function() {
+    $(function () {
 
-//This setTimeout function execute or call automatically when 5 second completed.
+        //This setTimeout function execute or call automatically when 5 second completed.
 
 
-setInterval(function() {
-  $("#aw").load(" #aw");
-}, 1000);
-});
+        setInterval(function () {
+            $("#aw1").load(" #aw1");
+            $("#aw2").load(" #aw2");
+            $("#aw3").load(" #aw3");
+        }, 1000);
+    });
 </script>

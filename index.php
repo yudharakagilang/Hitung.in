@@ -20,7 +20,11 @@ if(isset($_POST['login'])){
 				session_destroy();
 				session_start();
 				$_SESSION['username'] = $username;
-				header("location:dashboard.php");
+				echo' 
+				<script>
+				alert("Anda Berhasil Login");
+				</script>'  ; 
+				header("refresh:1; url=dashboard.php");
 			}else{
 			 echo' 
 			 <script>

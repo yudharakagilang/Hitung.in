@@ -23,7 +23,7 @@ if(empty($_SESSION['username'])){
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>CCTV Statistic 2</title>
+    <title>CCTV Statistic 4</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -121,7 +121,7 @@ function drawChart()
                                 <i class="fas fa-tachometer-alt"></i>Statistic CCTV 1
                             </a>
                         </li>
-                        <li class="active has-sub">
+                        <li class="has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Statistic CCTV 2
 
@@ -133,7 +133,7 @@ function drawChart()
                                 <i class="fas fa-tachometer-alt"></i>Statistic CCTV 3 </a>
 
                         </li>
-                        <li class="has-sub">
+                        <li class="active has-sub">
                             <a class="js-arrow" href="Chart4.php">
                                 <i class="fas fa-tachometer-alt"></i>Statistic CCTV 4 </a>
 
@@ -195,10 +195,10 @@ function drawChart()
                             <div class="au-card m-b-30">
                                 <div class="au-card-inner">
 
-                                    <h2 align="center">CCTV 2 Statistic</h2>
+                                    <h2 align="center">CCTV 4 Statistic</h2>
                                     <div id="line_chart" style="width: 1600px  ; height: 700px">
                                         <?php 
-                                            $uri ="http://localhost:3000/d-solo/4pUCZjiZk/lantai-2?orgId=1&panelId=2&refresh=5s&from=now-5m&to=now&theme=light"  ;
+                                            $uri ="http://localhost:3000/d-solo/KVLzMjmWk/lantai-4?orgId=1&panelId=2&refresh=5s&from=now-5m&to=now&theme=light"  ;
                                             ?>
                                         <iframe src=<?php echo $uri ?> width="1600" height="500"
                                             frameborder="0"></iframe>
@@ -208,7 +208,7 @@ function drawChart()
                                             $mysqli = mysqli_connect("localhost", "root", "", "hitungin");
 
                                             // QUERY 1
-                                            $sql="SELECT value FROM record2 ORDER by time desc limit 1";
+                                            $sql="SELECT value FROM record4 ORDER by time desc limit 1";
                                             $result = mysqli_query($mysqli,$sql);
                                             while($row = mysqli_fetch_array($result)) {
                                                 $jumlah_orang=$row['value']; 
@@ -221,7 +221,7 @@ function drawChart()
                                         </div>
                                         <?php
                                             // QUERY 2 
-                                            $sql2="select rerata,Jam from avg_hour2 where Tanggal=DAY(now()) and Bulan=MONTH(now()) and Tahun=YEAR(now()) order by rerata DESC limit 1";
+                                            $sql2="select rerata,Jam from avg_hour4 where Tanggal=DAY(now()) and Bulan=MONTH(now()) and Tahun=YEAR(now()) order by rerata DESC limit 1";
                                             $result2 = mysqli_query($mysqli,$sql2);
                                             while($row2 = mysqli_fetch_array($result2)) {
                                                 $jumlah_orang2=$row2['rerata']; 
@@ -234,7 +234,7 @@ function drawChart()
                                             echo "<h3>Peak Hour (today) :&nbsp&nbsp&nbsp&nbspJam&nbsp$jam4&nbsp</h3>";
 
                                               // QUERY 3 
-                                              $sql2="select rerata,Jam from avg_hour2 where Tanggal=DAY(now()) and Bulan=MONTH(now()) and Tahun=YEAR(now()) order by rerata ASC limit 1";
+                                              $sql2="select rerata,Jam from avg_hour4 where Tanggal=DAY(now()) and Bulan=MONTH(now()) and Tahun=YEAR(now()) order by rerata ASC limit 1";
                                               $result2 = mysqli_query($mysqli,$sql2);
                                               while($row2 = mysqli_fetch_array($result2)) {
                                                   $jumlah_orang2=$row2['rerata']; 
